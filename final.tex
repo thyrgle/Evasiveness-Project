@@ -1,0 +1,67 @@
+\documentclass[letterpaper,12pt]{article}
+
+\usepackage[table]{xcolor} % Must come before packages that load xcolor
+
+\usepackage{amsfonts}
+\usepackage{amsmath}
+\usepackage{amssymb}
+\usepackage{array}
+\usepackage{booktabs}
+\usepackage{color}
+\usepackage{enumerate}
+\usepackage{graphics}
+\usepackage{mdwlist}
+\usepackage{multicol}
+
+\usepackage[normalem]{ulem}
+\usepackage[margin=1in]{geometry}
+\setlength{\parskip}{1ex}
+
+\newcommand{\A}{\mathcal{A}}
+\newcommand{\Po}{\mathcal{P}}
+\newcommand{\dom}{\text{dom}}
+\newcommand{\ran}{\text{ran}}
+\newcommand{\rest}{\upharpoonright}
+\newcommand{\seg}{\text{seg}}
+\newcommand{\la}{\langle}
+\newcommand{\ra}{\rangle}
+\newcommand{\Ord}{\text{Ord}}
+
+\begin{document}
+
+\title{HW9}
+\author{Christopher Sumnicht}
+\maketitle
+
+\section{Introduction}
+
+In the previous paper, we have concluded that for any simplex associated with a graph property to be nonevasive it must be collapsible. It may still be the case that there is an evasive property which is also collapsible. What then does this property buy us?
+
+We can ask the question: Are there any graph properties which are not collapsible? This is still very much an active field of research, we will focus on one theorem in particular in this paper:
+
+\begin{quote}
+    Any nontrivial monotone graph property on a graph with a prime power of vertices is evasive.
+\end{quote}
+
+What is the general idea behind such a proof? Show that the associated simplicial complex is not collapsible!
+
+\section{Homology Groups}
+
+\subsection{Informal Definition}
+
+The $n$th homology group is, very roughly speaking, a way of finding the number of $n$ dimensional holes in some surface. It is also worth mentioning the $0$th homology group corresponds to the number of connected componenets of a surface. Nevertheless, to say that it "counts" the number of holes is a bit misleading. A circle, for instance, has one $1$-dimensional hole in the center and has one connected component. It is not the case that $H_0(S^1) = 1$ and $H_1(S^1) = 1$. Often one will see the following result instead:
+
+$$H_k(S^1) =
+\begin{cases}
+    \mathbb{Z}, & k = 0, 1 \\
+    \{ 0 \}, & \text{otherwise}
+\end{cases}
+$$
+
+Sometimes $\mathbb{Z}$ is replaced with $\mathbb{Z}_2$, and in our case we will be mostly concerning ourselves $\mathbb{F}_p$. Although it might not be clear where $\mathbb{Z}$ comes from, one should for now think of $\mathbb{Z}$ as the number $1$, as this coincides with the informal defintion, namely, there is one connected componenet, and one $1$-dimensional hole. Where $\mathbb{Z}$ actually comes from will become clear when we examine how homology groups are definied.
+
+\subsubsection{Simplicial Complexes}
+
+The actual definition of homology groups are rather difficult in the most general case. Fortunately, the only surfaces we need to concern ourselves with are simplicial complexes which are much easier to understand.
+
+\end{document}
