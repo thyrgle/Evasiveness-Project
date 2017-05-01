@@ -29,7 +29,7 @@
 
 \begin{document}
 
-\title{HW9}
+\title{Fixed Point Theorems and Evasiveness}
 \author{Christopher Sumnicht}
 \maketitle
 
@@ -61,11 +61,15 @@ Before we begin to tackle decision trees we will have to make a detour and devel
         }
 \end{enumerate}
 
-\section{Homology Groups}
+\section{Collapsibility and Holes}
 
-\subsection{Informal Definition}
+We first should provide some intuition as to why collapsibility can (although not nearly as well as homology groups) detect holes in our structure. Imagine that the simplicial complex is a compressible fluid and that the space that is not an element of the complex is solid and rigid. Imagine taking your hand and squishing the fluid in order to reduce it to a single point. If there is a hole, it will feel like a rock in your hand. Otherwise, you can continue compressing everything down to a single point.
 
-The $n$th homology group is, very roughly speaking, a way of finding the number of $n$ dimensional holes in some surface. It is also worth mentioning the $0$th homology group corresponds to the number of connected componenets of a surface. Nevertheless, to say that it "counts" the number of holes is a bit misleading. A circle, for instance, has one $1$-dimensional hole in the center and has one connected component. It is not the case that $H_0(S^1) = 1$ and $H_1(S^1) = 1$. Often one will see the following result instead:
+Of course, this is simply an analogy. Let's actually prove it.
+
+\subsection{Homology Groups}
+
+The $n$th homology group is, roughly speaking, a way of finding the number of $n$ dimensional holes in some surface. It is also worth mentioning the $0$th homology group corresponds to the number of connected componenets of a surface. Nevertheless, to say that it "counts" the number of holes is a bit misleading. A circle, for instance, has one $1$-dimensional hole in the center and has one connected component. It is not the case that $H_0(S^1) = 1$ and $H_1(S^1) = 1$. Often one will see the following result instead:
 
 $$H_k(S^1) =
 \begin{cases}
@@ -76,14 +80,28 @@ $$
 
 Sometimes $\mathbb{Z}$ is replaced with $\mathbb{Z}_2$, and in our case we will be mostly concerning ourselves $\mathbb{F}_p$. Although it might not be clear where $\mathbb{Z}$ comes from, one should for now think of $\mathbb{Z}$ as the number $1$, as this coincides with the informal defintion, namely, there is one connected componenet, and one $1$-dimensional hole.
 
-\subsubsection{Collapsibility and Homology}
+\subsubsection{Boundary Maps}
 
-We now wish to draw a connection between homology and collapsibility. Recall the general idea of collapsing a simplicial complex involves smushing the simplex down to a single point. No tearing is involved. Also, as mentioned in the previous paper it is not possible to smush holes (consider the simplex that is the empty triangle). As such we expect a collapsible simplex to have 1 connected component and 0 holes. To rephrase this slightly differently: We expect a collapsible simplex to have the same homology as a point.
+Suppose we want to get the boundary of a simplicial complex. For example if we have a filled triangle $\Delta$ we may want some operator $\partial$ that $\partial \Delta$ gives us just the edges. In the case, a filled triangle should become an empty triangle.
 
-\subsubsection{Fixed Points}
+\begin{quote}
+    We define the \textbf{Boundary Map} of a simplicial complex to be precisely: (TODO)
+\end{quote}
 
+We now consider the $\ker(\partial)$. This ends up being the cycle space of a graph. They cycles are our tool for determining holes. But currently $\ker(\partial)$, by itself gives a few too many cycles needed to describe capture a hole. So we will define an equivalence class which does:
 
-\subsection{Proof of Theorem}
+\begin{quote}
+    We define the $n$th homology group as:
+
+    $$H_n = \frac{\ker(\partial_n)}{\text{im}(\partial_{n+1}}$$
+\end{quote}
+
+Let's consider an example to figure out how $H_n$ gives us a hole.
+
+\begin{quote}
+\end{quote}
+
+\subsubsection{Proof of Theorem}
 
 \section{Fixed Points}
 
