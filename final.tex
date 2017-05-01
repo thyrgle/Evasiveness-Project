@@ -93,15 +93,17 @@ We now consider the $\ker(\partial)$. This ends up being the cycle space of a gr
 \begin{quote}
     We define the $n$th homology group as:
 
-    $$H_n = \frac{\ker(\partial_n)}{\text{im}(\partial_{n+1}}$$
+    $$H_n = \frac{\ker(\partial_n)}{\text{im}(\partial_{n+1})}$$
 \end{quote}
 
-Let's consider an example to figure out how $H_n$ gives us a hole.
+Let's consider an example to see why $H_n$ gives us a hole.
 
 \begin{quote}
 \end{quote}
 
-\subsubsection{Proof of Theorem}
+\subsubsection{Acyclic}
+
+\subsubsection{Collapsible Simplicial Complexes are Acyclic}
 
 \section{Fixed Points}
 
@@ -116,19 +118,24 @@ At this point we have two major tools at our disposal:
         }
 \end{enumerate}
 
-We now wish to present two important tools in topology:
-
-\begin{enumerate}
-    \item{
-            Brouwer fixed point theorem.
-        }
-    \item{
-            Lefshetz fixed point theorem.
-        }
-\end{enumerate}
-
-\subsection{Brouwer Fixed Point Theorem}
 
 \subsection{Lefschetz Fixed Point Theorem}
+
+Now that we have introduced quite a bit of machine to prove a relatively intuitive fact, we can now use this machinery to prove a less obvious fact.
+
+\begin{quote}
+    Every simplicial automorphism fixes some subcomplex.
+\end{quote}
+
+To put this another way suppose we have some function $f : \Delta \to \Delta$ such that $f$ takes any subcomplex of $\Delta$ to another subcomplex of $\Delta$ there is at least one such subcomplex $\delta$ such that:
+
+$$f(\delta) = \delta$$
+
+Hence $\delta$ is a "fixed point".
+
+\subsubsection{Proof}
+
+
+\subsection{Proof of Theorem}
 
 \end{document}
