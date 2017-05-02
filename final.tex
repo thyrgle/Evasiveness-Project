@@ -85,23 +85,35 @@ Sometimes $\mathbb{Z}$ is replaced with $\mathbb{Z}_2$, and in our case we will 
 Suppose we want to get the boundary of a simplicial complex. For example if we have a filled triangle $\Delta$ we may want some operator $\partial$ that $\partial \Delta$ gives us just the edges. In the case, a filled triangle should become an empty triangle.
 
 \begin{quote}
-    We define the \textbf{Boundary Map} of a simplicial complex to be precisely: (TODO)
+    We define the \textbf{Boundary Map} of a simplicial complex to be precisely:
+    
+    $$d_n([v_0,v_1,\ldots,v_n]) = \sum_{i=0}^n (-1)^i[v_0,v_1,\ldots,v_{i-1},v_{i+1},\ldots,v_n ]$$
 \end{quote}
 
 We now consider the $\ker(\partial)$. This ends up being the cycle space of a graph. They cycles are our tool for determining holes. But currently $\ker(\partial)$, by itself gives a few too many cycles needed to describe capture a hole. So we will define an equivalence class which does:
 
 \begin{quote}
-    We define the $n$th homology group as:
+    We define the $n$\textbf{th homology group} as:
 
-    $$H_n = \frac{\ker(\partial_n)}{\text{im}(\partial_{n+1})}$$
+    $$H_n(\Delta, F_p) = \frac{\ker(\partial_n)}{\text{im}(\partial_{n+1})}$$
 \end{quote}
 
-Let's consider an example to see why $H_n$ gives us a hole.
+As the homology group is a definition there is no way to "prove" that the $n$th homology group gives us the $n$-dimensional holes. Nevertheless, let us consider an example to gain some for intuition for why this might be a good definition.
+
+\begin{quote}
+    \textbf{Example}
+\end{quote}
 
 \begin{quote}
 \end{quote}
 
-\subsubsection{Acyclic}
+\subsubsection{Acyclic Simplicical Complexes}
+
+Intuitively speaking, a simplicial complex that is \textbf{acyclic} has no holes. More formally states:
+
+\begin{quote}
+    A simplicial complex is \textbf{acyclic} if every homology except for the $0$th homology group is trivial.
+\end{quote}
 
 \subsubsection{Collapsible Simplicial Complexes are Acyclic}
 
