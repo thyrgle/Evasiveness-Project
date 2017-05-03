@@ -65,20 +65,7 @@ We first should provide some intuition as to why collapsibility can (although no
 
 Of course, this is simply an analogy. Let's actually prove it.
 
-\subsection{Homology Groups}
-
-The $n$th homology group is, roughly speaking, a way of finding the number of $n$ dimensional holes in some surface. It is also worth mentioning the $0$th homology group corresponds to the number of connected componenets of a surface. Nevertheless, to say that it "counts" the number of holes is a bit misleading. A circle, for instance, has one $1$-dimensional hole in the center and has one connected component. It is not the case that $H_0(S^1) = 1$ and $H_1(S^1) = 1$. Often one will see the following result instead:
-
-$$H_k(S^1) =
-\begin{cases}
-    \mathbb{Z}, & k = 0, 1 \\
-    \{ 0 \}, & \text{otherwise}
-\end{cases}
-$$
-
-Sometimes $\mathbb{Z}$ is replaced with $\mathbb{Z}_2$, and in our case we will be mostly concerning ourselves $\mathbb{F}_p$. Although it might not be clear where $\mathbb{Z}$ comes from, one should for now think of $\mathbb{Z}$ as the number $1$, as this coincides with the informal defintion, namely, there is one connected componenet, and one $1$-dimensional hole.
-
-\subsubsection{Boundary Maps}
+\subsection{Boundary Maps}
 
 Suppose we want to get the boundary of a simplicial complex. For example if we have a filled triangle $\Delta$ we may want some operator $\partial$ that $\partial \Delta$ gives us just the edges. In the case, a filled triangle should become an empty triangle.
 
@@ -105,6 +92,42 @@ As the homology group is a definition there is no way to "prove" that the $n$th 
 \begin{quote}
 \end{quote}
 
+\subsection{Homology Groups}
+
+The $n$th homology group is, roughly speaking, a way of finding the number of $n$ dimensional holes in some surface. It is also worth mentioning the $0$th homology group corresponds to the number of connected componenets of a surface. Nevertheless, to say that it "counts" the number of holes is a bit misleading. A circle, for instance, has one $1$-dimensional hole in the center and has one connected component. It is not the case that $H_0(S^1) = 1$ and $H_1(S^1) = 1$. Often one will see the following result instead:
+
+$$H_k(S^1) =
+\begin{cases}
+    \mathbb{Z}, & k = 0, 1 \\
+    \{ 0 \}, & \text{otherwise}
+\end{cases}
+$$
+
+Sometimes $\mathbb{Z}$ is replaced with $\mathbb{Z}_2$, and in our case we will be mostly concerning ourselves $\mathbb{F}_p$. Although it might not be clear where $\mathbb{Z}$ comes from, one should for now think of $\mathbb{Z}$ as the number $1$, as this coincides with the informal defintion, namely, there is one connected componenet, and one $1$-dimensional hole.
+
+\begin{quote}
+    We define the $n$\textbf{th homology group} as:
+
+    $$H_n(\Delta, F_p) = \frac{\ker(\partial_n)}{\text{im}(\partial_{n+1})}$$
+\end{quote}
+
+As the homology group is a definition there is no way to "prove" that the $n$th homology group gives us the $n$-dimensional holes. Nevertheless, let us consider an example to gain some for intuition for why this might be a good definition.
+
+\subsection{Reduced Homology}
+
+We consider a variant of the homology just introduced known as the "Reduced Homology". The reduced homology makes working with certain spaces a bit easier. In particular, for a point the every homology group is $0$ except for $H_0$. We want to make this nicer, so we modify the chain so that every homology group is $0$.
+
+To do this consider we have an arbitrary chain:
+
+$$\cdots \rightarrow C_2 \rightarrow C_1 \rightarrow C_0 \rightarrow 0$$
+
+We then define the function $r$ to be: (straight from wikipedia)
+$$r\left(\sum_i n_i \sigma_i\right) = \sum_i n_i$$
+
+And rework the chain to be:
+
+$$\cdots \rightarrow C_2 \rightarrow C_1 \rightarrow C_0 \xrightarrow{r} F_p \rightarrow 0$$
+
 \subsubsection{Acyclic Simplicical Complexes}
 
 Intuitively speaking, a simplicial complex that is \textbf{acyclic} has no holes. More formally states:
@@ -113,7 +136,14 @@ Intuitively speaking, a simplicial complex that is \textbf{acyclic} has no holes
     A simplicial complex is \textbf{acyclic} if every homology except for the $0$th homology group is trivial.
 \end{quote}
 
-\subsubsection{Exact Sequence}
+Alternatively:
+
+\begin{quote}
+    A simplicial complex is \textbf{acyclic} if the chain complex is trivial.
+\end{quote}
+
+
+\subsection{Exact Sequence}
 
 We now add an algebra tool to our disposal which will help us formally demonstrate that collapsible simplicial complex are acyclic. We introduce some notation to "visualize" the relationship between the boundary operator and homology groups. We consider any sequence of groups $Y_n$ and a function that maps between them. We write this as:
 
@@ -144,14 +174,29 @@ We denote these \textbf{chain complexes} as $Y_{\tb}$. Now we can introduce what
 
 \end{quote}
 
-Now, this is somewhat of an abuse of notation. as $0 \rightarrow X_{\tb} \rightarrow Y_{\tb} \rightarrow Z_{\tb} \rightarrow 0$ actually becomes: (TODO)
+Now, this is somewhat of an abuse of notation. as $0 \rightarrow X_{\tb} \rightarrow Y_{\tb} \rightarrow Z_{\tb} \rightarrow 0$ actually becomes:
 
 \begin{displaymath}
-    \xymatrix{0 \ar[r] & X_{\tb} \ar[r] & Y_{\tb} \ar[r] & Z_{\tb} \ar[r] & 0 }
+    \xymatrix{ \vdots \ar[d] & \vdots \ar[d] & \vdots \ar[d] & \vdots \ar[d] & \vdots \ar[d] \\  
+              0 \ar[r] \ar[d] & X_{1} \ar[r] \ar[d] & Y_{1} \ar[r] \ar[d] & Z_{1} \ar[r] \ar[d] & 0 \ar[d]  \\
+              0 \ar[r]        & X_{0} \ar[r]        & Y_{0} \ar[r]        & Z_{0} \ar[r] &        0 \\ }
 \end{displaymath}
 
+Why is this useful? For our purposes, short exact sequences are useful because of the following lemma:
+
+\begin{quote}
+    For a short exact sequence:
+
+    $$0 \rightarrow X_{\tb} \rightarrow Y_{\tb} \rightarrow Z_{\tb} \rightarrow 0 $$
+
+    if $X_{\tb}$ and $Z_{\tb}$ are acyclic, then $Y_{\tb}$ is acyclic.
+\end{quote}
+
+We will not prove this fact here.
 
 \subsubsection{Collapsible Simplicial Complexes are Acyclic}
+
+Using the property we have shown about short exact sequences, we can complete a convincing algebraic proof that collapsile simplicial complexes are acyclic.
 
 \section{Fixed Points}
 
@@ -169,7 +214,7 @@ At this point we have two major tools at our disposal:
 
 \subsection{Lefschetz Fixed Point Theorem}
 
-Now that we have introduced quite a bit of machine to prove a relatively intuitive fact, we can now use this machinery to prove a less obvious fact.
+Now that we have introduced quite a bit of machine to prove a relatively intuitive fact, we can now use this machinery to prove a less obvious fact:
 
 \begin{quote}
     \textbf{Theorem (Lefschetz)}Every simplicial automorphism fixes some subcomplex.
@@ -183,6 +228,11 @@ Hence $\delta$ is a "fixed point".
 
 \subsubsection{Proof}
 
+\subsection{Orbits}
+
+\subsubsection{Support Simplex}
+
+\subsubsection{Orbit of a Support Simplex}
 
 \subsection{Proof of Theorem}
 
