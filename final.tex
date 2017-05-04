@@ -18,12 +18,13 @@
 \usepackage[margin=1in]{geometry}
 \setlength{\parskip}{1ex}
 
-\newcommand{\dom}{\text{dom}}
-\newcommand{\ran}{\text{ran}}
-\newcommand{\seg}{\text{seg}}
 \newcommand{\la}{\langle}
 \newcommand{\ra}{\rangle}
+\newcommand{\lra}{\longrightarrow}
 \newcommand{\tb}{\text{\textbullet}}
+\newcommand{\sgn}{\text{sgn}}
+\newcommand{\Tr}{\text{Tr}}
+\newcommand{\im}{\text{im}}
 
 \begin{document}
 
@@ -78,14 +79,6 @@ Suppose we want to get the boundary of a simplicial complex. For example if we h
 We now consider the $\ker(\partial)$. This ends up being the cycle space of a graph. They cycles are our tool for determining holes. But currently $\ker(\partial)$, by itself gives a few too many cycles needed to describe capture a hole. So we will define an equivalence class which does:
 
 \begin{quote}
-    We define the $n$\textbf{th homology group} as:
-
-    $$H_n(\Delta, F_p) = \frac{\ker(\partial_n)}{\text{im}(\partial_{n+1})}$$
-\end{quote}
-
-As the homology group is a definition there is no way to "prove" that the $n$th homology group gives us the $n$-dimensional holes. Nevertheless, let us consider an example to gain some for intuition for why this might be a good definition.
-
-\begin{quote}
     \textbf{Example}
 \end{quote}
 
@@ -113,13 +106,17 @@ Sometimes $\mathbb{Z}$ is replaced with $\mathbb{Z}_2$, and in our case we will 
 
 As the homology group is a definition there is no way to "prove" that the $n$th homology group gives us the $n$-dimensional holes. Nevertheless, let us consider an example to gain some for intuition for why this might be a good definition.
 
+\begin{quote}
+    \textbf{Example}
+\end{quote}
+
 \subsection{Reduced Homology}
 
 We consider a variant of the homology just introduced known as the "Reduced Homology". The reduced homology makes working with certain spaces a bit easier. In particular, for a point the every homology group is $0$ except for $H_0$. We want to make this nicer, so we modify the chain so that every homology group is $0$.
 
 To do this consider we have an arbitrary chain:
 
-$$\cdots \rightarrow C_2 \rightarrow C_1 \rightarrow C_0 \rightarrow 0$$
+$$\cdots \lra C_2 \lra C_1 \lra C_0 \lra 0$$
 
 We then define the function $r$ to be: (straight from wikipedia)
 $$r\left(\sum_i n_i \sigma_i\right) = \sum_i n_i$$
@@ -130,32 +127,21 @@ $$\cdots \rightarrow C_2 \rightarrow C_1 \rightarrow C_0 \xrightarrow{r} F_p \ri
 
 \subsubsection{Acyclic Simplicical Complexes}
 
-Intuitively speaking, a simplicial complex that is \textbf{acyclic} has no holes. More formally states:
+Intuitively speaking, a simplicial complex that is \textbf{acyclic} has no holes. More formally:
 
 \begin{quote}
-    A simplicial complex is \textbf{acyclic} if every homology except for the $0$th homology group is trivial.
+    A simplicial complex is \textbf{acyclic} if the reduced homology is trivial.
 \end{quote}
-
-Alternatively:
-
-\begin{quote}
-    A simplicial complex is \textbf{acyclic} if the chain complex is trivial.
-\end{quote}
-
 
 \subsection{Exact Sequence}
 
 We now add an algebra tool to our disposal which will help us formally demonstrate that collapsible simplicial complex are acyclic. We introduce some notation to "visualize" the relationship between the boundary operator and homology groups. We consider any sequence of groups $Y_n$ and a function that maps between them. We write this as:
 
-\begin{displaymath}
-    \xymatrix{\ldots \ar[r] & Y_2 \ar[r] & Y_1 \ar[r] & Y_0 \ar[r] & 0 }
-\end{displaymath}
+$$\ldots \longrightarrow Y_2 \rightarrow Y_1 \rightarrow Y_0 \rightarrow 0 $$
 
 So in the case of homology groups:
 
-\begin{displaymath}
-    \xymatrix{\ldots \ar[r] & H_2 \ar[r] & H_1 \ar[r] & H_0 \ar[r] & 0 }
-\end{displaymath}
+$$\ldots \rightarrow H_2 \rightarrow H_1 \rightarrow H_0 \rightarrow 0 $$
 
 We can also arrange the lines vertically:
 
@@ -163,40 +149,40 @@ We can also arrange the lines vertically:
     \xymatrix{\vdots \ar[d] \\ Y_2 \ar[d] \\ Y_1 \ar[d] \\ Y_0 \ar[d] \\ 0 }
 \end{displaymath}
 
-We denote these \textbf{chain complexes} as $Y_{\tb}$. Now we can introduce what is referred to as a short exact sequence:
+We denote these \textbf{chain complexes} as $Y_{\tb}$. Now we can introduce a useful structure know as a \textbf{short exact sequence}.
+
+\subsection{Useful tools for Homological Algebra}
 
 \begin{quote}
     A \textbf{short exact sequence} is a structure of the form:
 
-    \begin{displaymath}
-        \xymatrix{0 \ar[r] & X_{\tb} \ar[r] & Y_{\tb} \ar[r] & Z_{\tb} \ar[r] & 0 }
-    \end{displaymath}
+    $$0 \lra X_{\tb} \lra Y_{\tb} \lra Z_{\tb} \lra 0 $$
 
 \end{quote}
-
-Now, this is somewhat of an abuse of notation. as $0 \rightarrow X_{\tb} \rightarrow Y_{\tb} \rightarrow Z_{\tb} \rightarrow 0$ actually becomes:
-
-\begin{displaymath}
-    \xymatrix{ \vdots \ar[d] & \vdots \ar[d] & \vdots \ar[d] & \vdots \ar[d] & \vdots \ar[d] \\  
-              0 \ar[r] \ar[d] & X_{1} \ar[r] \ar[d] & Y_{1} \ar[r] \ar[d] & Z_{1} \ar[r] \ar[d] & 0 \ar[d]  \\
-              0 \ar[r]        & X_{0} \ar[r]        & Y_{0} \ar[r]        & Z_{0} \ar[r] &        0 \\ }
-\end{displaymath}
 
 Why is this useful? For our purposes, short exact sequences are useful because of the following lemma:
 
 \begin{quote}
-    For a short exact sequence:
+    \textbf{Lemma A} For a short exact sequence:
 
-    $$0 \rightarrow X_{\tb} \rightarrow Y_{\tb} \rightarrow Z_{\tb} \rightarrow 0 $$
+    $$0 \lra X_{\tb} \lra Y_{\tb} \lra Z_{\tb} \lra 0 $$
 
     if $X_{\tb}$ and $Z_{\tb}$ are acyclic, then $Y_{\tb}$ is acyclic.
 \end{quote}
 
-We will not prove this fact here.
+This is a well known fact in homological algebra, that we will not prove this fact here. We will, however, use this fact to provide a reasonably rigorous proof that collapsible simplicial complexes are acyclic.
+
+
+Another useful tool we will not prove:
+
+\begin{quote}
+    \textbf{Lemma B} For a short exact sequence:
+
+    $$0 \lra X_{\tb} \lra Y_{\tb} \lra Z_{\tb} \lra 0 $$ 
+
+\end{quote}
 
 \subsubsection{Collapsible Simplicial Complexes are Acyclic}
-
-Using the property we have shown about short exact sequences, we can complete a convincing algebraic proof that collapsile simplicial complexes are acyclic.
 
 \section{Fixed Points}
 
@@ -228,7 +214,53 @@ Hence $\delta$ is a "fixed point".
 
 \subsubsection{Proof}
 
+The strategy we will use to show $F$ has a fixed point will go as follows:
+
+\begin{enumerate}
+    \item{
+            Construct a linear transformation associated with $f$.
+        }
+    \item{
+            Compute the trace of this function two different ways.
+        }
+    \item{
+            Show the trace is different and arrive at a contradiciton.
+        }
+\end{enumerate}
+
+We will now define the linear function we need:
+
+\begin{quote}
+    Let $F$ be the \textbf{associated chain map} with $f$:
+    $$F_n = \sgn(f(\Delta_n))(f(\Delta_n)$$
+
+    where $\Delta_n$ is the set of all faces in $\Delta$ of dimension $n$.
+\end{quote}
+
+As $F_n$ is a linear transformation, we can imagine stacking these transformations to get a matrix. From this we can consturct a matrix. From this matrix we can take the trace which we will denote: $\Tr_F$. We then observe that:
+
+$$\Tr_F(H_0) = 1$$
+$$\Tr_F(H_n) = 0 \text{ if } n > 0$$
+
+And observe that:
+
+$$\Tr_F(K_n) = 0$$
+
+Thus we see:
+
+\begin{align}
+    0 &= \sum (-1)^{n} \Tr_F(K_n) \\
+      &= \Tr_F + \sum (-1)^{n} [\Tr_F(\im \partial) + \Tr_F(\ker \partial)] \\
+      &= \Tr_F - \Tr_F(\im \partial_1) \\
+      &= \Tr_F - \ldots
+      &= 1
+\end{align}
+
+So there must be a fixed point.
+
 \subsection{Orbits}
+
+How fixed is any particular simplex? Well let's consider any particular fixed point $x$ in our simplex. Then we consider the orbit of our simplex 
 
 \subsubsection{Support Simplex}
 
