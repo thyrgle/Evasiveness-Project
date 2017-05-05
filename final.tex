@@ -134,11 +134,6 @@ Intuitively speaking, a simplicial complex that is \textbf{acyclic} has no holes
     A simplicial complex is \textbf{acyclic} if the reduced homology is trivial.
 \end{quote}
 
-\section{Abstract Simplicial Complex versus the Geometric Realization}
-
-We discussed the differences between the algebraic interpretation and geometric realization of an abstract simplicial complex. 
-
-
 \subsection{Exact Sequence}
 
 We now add an algebra tool to our disposal which will help us formally demonstrate that collapsible simplicial complex are acyclic. We introduce some notation to "visualize" the relationship between the boundary operator and homology groups. We consider any sequence of groups $Y_n$ and a function that maps between them. We write this as:
@@ -204,79 +199,46 @@ At this point we have two major tools at our disposal:
 \end{enumerate}
 
 
-\subsection{Lefschetz Fixed Point Theorem}
-
-Now that we have introduced quite a bit of machine to prove a relatively intuitive fact, we can now use this machinery to prove a less obvious fact:
+\subsection{Brouwer Fixed Point theorem}
 
 \begin{quote}
-    \textbf{Theorem (Lefschetz)}Every simplicial automorphism fixes some subcomplex.
+    \textbf{Theorem (Brouwer)} Any continuous function from some geometric realization of a simplicial complex $\Delta$ (which we will denote $\ol{\Delta}$) fixes some point. In otherwords, say $f : \ol{\Delta} \to \ol{\Delta}$, then there is some $\delta \in \ol{\Delta}$ such that:
+    $$f(\delta) = \delta$$
 \end{quote}
 
-To put this another way suppose we have some function $f : \Delta \to \Delta$ such that $f$ takes any subcomplex of $\Delta$ to another subcomplex of $\Delta$ there is at least one such subcomplex $\delta$ such that:
-
-$$f(\delta) = \delta$$
-
-Hence $\delta$ is a "fixed point".
-
-\subsubsection{Proof}
-
-The strategy we will use to show $F$ has a fixed point will go as follows:
-
-\begin{enumerate}
-    \item{
-            Construct a linear transformation associated with $f$.
-        }
-    \item{
-            Compute the trace of this function two different ways.
-        }
-    \item{
-            Show the trace is different and arrive at a contradiciton.
-        }
-\end{enumerate}
-
-We will now define the linear function we need:
+We will instead prove a special case of this theorem. Nevertheless, the same general idea can be used to prove this variant of Brouwer's theorem, however, it gets quite a bit messier.
 
 \begin{quote}
-    Let $F$ be the \textbf{associated chain map} with $f$:
-    $$F_n = \sgn(f(\Delta_n))(f(\Delta_n)$$
-
-    where $\Delta_n$ is the set of all faces in $\Delta$ of dimension $n$.
+    \textbf{Theorem (Brouwer Open Ball)} Any smooth function (continuous and differentiable) function $f$ from the closed (unit) disc to itself has a fixed point.
 \end{quote}
 
-As $F_n$ is a linear transformation, we can imagine stacking these transformations to get a matrix. From this we can consturct a matrix. From this matrix we can take the trace which we will denote: $\Tr_F$. We then observe that:
+\textbf{Proof} We make the following observation: 
 
-$$\Tr_F(H_0) = 1$$
-$$\Tr_F(H_n) = 0 \text{ if } n > 0$$
+\begin{quote}
+    \textbf{Retraction Lemma} There is no smooth map $g : D \to \partial D$ such that $g \upharpoonright \partial D \to \partial D$ is equivalent to the identity on the boundary.
+\end{quote}
 
-And observe that:
+It is often stated as: there is no way to retract the disc to it's boundary.
 
-$$\Tr_F(K_n) = 0$$
+From this we will construct a function which is smooth but also the identity at the boundary given any smooth $f$ without fixed points.
 
-Thus we see:
+As $f(x) \neq x$, we can construct a line from $f(x)$ through $x$ to the boundary. By calling this point $g(x)$ we get a new function $g : D \to \partial D$. Now, one important thing to to note is \textit{if} $f$ did indeed have a fixed point, it would be impossible to construct the ray! Now suppose that $x \in \partial D$, then $g(x) = x$ and so $g \upharpoonright \partial D$ is indeed the identity.
 
-\begin{align}
-    0 &= \sum (-1)^{n} \Tr_F(K_n) \\
-      &= \Tr_F + \sum (-1)^{n} [\Tr_F(\im \partial) + \Tr_F(\ker \partial)] \\
-      &= \Tr_F - \Tr_F(\im \partial_1) \\
-      &= \Tr_F - \ldots
-      &= 1
-\end{align}
+All we need to do now is show that $g$ is indeed a smooth function. As they $g(x)$, $f(x)$ and $x$ are all on the same line segment, it follows that:
 
-So there must be a fixed point.
+$$g(x) = tx - (1 - t)f(x)$$
+
+for some $t$. All we need to show is that $t(x)$ is a smooth function. This can be done by observing that $|g(x)| = 1$ so:
+
+$$t^2|x - f(x)|^2 + 2tf(x)[x - f(x)] + f(x)^2 - 1 = 0$$
+
+The solution to the equation can be obtained from the quadratic formula (or WolframAlpha), but the actual solution does not matter, really all that is necessary is to observe that the quadratic formula applied to smooth functions is again smooth and so it follows that $g$ is smoothe \textbf{Retraction Lemma}.
 
 \section{Abstract Simplicial Complex versus the Geometric Realization}
 
-We discussed the differences between the algebraic interpretation and geometric realization of an abstract simplicial complex. At this point we want make some things clear.
-
-\begin{quote}
-    A \textbf{simplicial map} is a map $f : \Delta \to \Delta'$ where $\Delta$ and $\Delta'$ prime are \textit{abstract} simplicial complexes and for any subsimplex $\delta$:
-
-    $$f(\delta) \in \Delta'$$
-\end{quote}
-
 We make the following observation that there is a geometric realization of $f$. Call it $\ol{f}$. Observe that $\ol{f}$ is a continuous map from the geometric realization of $\Delta$ (we will refer to this as $\ol{\Delta}$ to the geometric realization of $\Delta'$ ($\ol{\Delta}$).
 
-If $\ol{f}$ maps from $\ol{\Delta}$ to $\ol{\Delta}$, it follows that we can apply Lefschetz Fixed Point theorem and notice that there is some fixed point $x \in \ol{\Delta}$ such that:
+If $\ol{f}$ maps from $\ol{\Delta}$ to $\ol{\Delta}$, it follows that we can apply Brouwer Fixed Point theorem and notice that there is some fixed point $x \in \ol{\Delta}$ such that:
 
 $$\ol{f}(x) = x$$
 
@@ -306,7 +268,11 @@ The rotations of these faces correspond to the "orbits" of $f$. Observing this f
     If $P$ is a non-evasive monotone property that invariant under cycles it must be evasive.
 \end{quote}
 
-\textbf{Proof}: Suppose otherwise, then $P$ is non-evasive $\implies P$ is collapsible $\implies$ for any function $f$, $f$ has a fixed point. But the orbit of such a function must contain the largest face which corresponds to the largest graph.
+\textbf{Proof}: Suppose otherwise, then $P$ is non-evasive $\implies P$ is collapsible $\implies$ for any function $f$, $f$ has a fixed point. But the orbit of such a function must be $\{1, 2, 3, \ldots |V_0| \}$, the largest face of the graph which means that the completely connected graph does not satisfy the property.
+
+\subsection{Finding the missing cycle}
+
+We are almost ready to prove the main result. In the previous theorem we had the condition that $P$ must be invariant under cycles.
 
 \subsection{Proof of Theorem}
 
