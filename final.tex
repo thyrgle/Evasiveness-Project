@@ -25,6 +25,7 @@
 \newcommand{\sgn}{\text{sgn}}
 \newcommand{\Tr}{\text{Tr}}
 \newcommand{\im}{\text{im}}
+\newcommand{\ol}{\overline}
 
 \begin{document}
 
@@ -132,6 +133,11 @@ Intuitively speaking, a simplicial complex that is \textbf{acyclic} has no holes
 \begin{quote}
     A simplicial complex is \textbf{acyclic} if the reduced homology is trivial.
 \end{quote}
+
+\section{Abstract Simplicial Complex versus the Geometric Realization}
+
+We discussed the differences between the algebraic interpretation and geometric realization of an abstract simplicial complex. 
+
 
 \subsection{Exact Sequence}
 
@@ -258,11 +264,33 @@ Thus we see:
 
 So there must be a fixed point.
 
+\section{Abstract Simplicial Complex versus the Geometric Realization}
+
+We discussed the differences between the algebraic interpretation and geometric realization of an abstract simplicial complex. At this point we want make some things clear.
+
+\begin{quote}
+    A \textbf{simplicial map} is a map $f : \Delta \to \Delta'$ where $\Delta$ and $\Delta'$ prime are \textit{abstract} simplicial complexes and for any subsimplex $\delta$:
+
+    $$f(\delta) \in \Delta'$$
+\end{quote}
+
+We make the following observation that there is a geometric realization of $f$. Call it $\ol{f}$. Observe that $\ol{f}$ is a continuous map from the geometric realization of $\Delta$ (we will refer to this as $\ol{\Delta}$ to the geometric realization of $\Delta'$ ($\ol{\Delta}$).
+
+If $\ol{f}$ maps from $\ol{\Delta}$ to $\ol{\Delta}$, it follows that we can apply Lefschetz Fixed Point theorem and notice that there is some fixed point $x \in \ol{\Delta}$ such that:
+
+$$\ol{f}(x) = x$$
+
+However, what $f$ does on the simplex is much more limiting than any arbitrary conitinuous function so we can get an even greater set of fixed points!
+
+\begin{quote}
+    If $x \in \ol{\Delta}$ then $x$ is the sum of some linear combination of basis vectors. Define the \textbf{support simplex of $x$} $\Delta_x$ to be the collection of non-zero support vectors.
+\end{quote}
+
+Because of the way $f$ acts on a simplicial complex, for any the support of any fixed point:
+
+$$f(\Delta_{x}) = \Delta_x$$
+
 \subsection{Orbits}
-
-How fixed is any particular simplex? Well let's consider any particular fixed point $x$ in our simplex. Then we consider the orbit of our simplex 
-
-\subsubsection{Support Simplex}
 
 \subsubsection{Orbit of a Support Simplex}
 
