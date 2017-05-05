@@ -290,9 +290,23 @@ Because of the way $f$ acts on a simplicial complex, for any the support of any 
 
 $$f(\Delta_{x}) = \Delta_x$$
 
+This intuitively says:
+
+\begin{quote}
+    If $x$ is a fixed point, then the face containing $x$ is fixed by the permutation.
+\end{quote}
+
+Furthermore, suppose $\ol{f}$ has some face. Then it may be the case the face was "rotated" from the original $\ol{\Delta}$, however it should be intuitive that this rotation does not affect the center point and so the center point is a fixed point for $f$.
+
 \subsection{Orbits}
 
-\subsubsection{Orbit of a Support Simplex}
+The rotations of these faces correspond to the "orbits" of $f$. Observing this fact we can almost conclude the following:
+
+\begin{quote}
+    If $P$ is a non-evasive monotone property that invariant under cycles it must be evasive.
+\end{quote}
+
+\textbf{Proof}: Suppose otherwise, then $P$ is non-evasive $\implies P$ is collapsible $\implies$ for any function $f$, $f$ has a fixed point. But the orbit of such a function must contain the largest face which corresponds to the largest graph.
 
 \subsection{Proof of Theorem}
 
