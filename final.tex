@@ -77,14 +77,7 @@ Suppose we want to get the boundary of a simplicial complex. For example if we h
     $$d_n([v_0,v_1,\ldots,v_n]) = \sum_{i=0}^n (-1)^i[v_0,v_1,\ldots,v_{i-1},v_{i+1},\ldots,v_n ]$$
 \end{quote}
 
-We now consider the $\ker(\partial)$. This ends up being the cycle space of a graph. They cycles are our tool for determining holes. But currently $\ker(\partial)$, by itself gives a few too many cycles needed to describe capture a hole. So we will define an equivalence class which does:
-
-\begin{quote}
-    \textbf{Example}
-\end{quote}
-
-\begin{quote}
-\end{quote}
+We now consider the $\ker(\partial)$. This ends up being the cycle space of a graph. They cycles are our tool for determining holes. But currently $\ker(\partial)$, by itself gives a few too many cycles needed to describe capture a hole. So we will define an equivalence class which does.
 
 \subsection{Homology Groups}
 
@@ -103,12 +96,6 @@ Sometimes $\mathbb{Z}$ is replaced with $\mathbb{Z}_2$, and in our case we will 
     We define the $n$\textbf{th homology group} as:
 
     $$H_n(\Delta, F_p) = \frac{\ker(\partial_n)}{\text{im}(\partial_{n+1})}$$
-\end{quote}
-
-As the homology group is a definition there is no way to "prove" that the $n$th homology group gives us the $n$-dimensional holes. Nevertheless, let us consider an example to gain some for intuition for why this might be a good definition.
-
-\begin{quote}
-    \textbf{Example}
 \end{quote}
 
 \subsection{Reduced Homology}
@@ -272,8 +259,22 @@ The rotations of these faces correspond to the "orbits" of $f$. Observing this f
 
 \subsection{Finding the missing cycle}
 
-We are almost ready to prove the main result. In the previous theorem we had the condition that $P$ must be invariant under cycles.
+We are almost ready to prove the main result. What we will plan to do now is show that there is a point that is fixed by every simplicial automophism.
+
+\begin{quote}
+    Let $\Gamma$ be a group of mappings and let $\Gamma'$ be a normal subgroup of order $p^k$ where $p$ is a prime. Suppose that $\Gamma/\Gamma'$ is cyclic, then every memeber of $\Gamma$ shares a fixed point.
+\end{quote}
+
+We will not go through a formal proof of this, but to gain an intuition for this when ever $x$ is a fixed point for $\Gamma$ we can "change the basis" representation of $x$ to be written in terms of any other permutation.
 
 \subsection{Proof of Theorem}
+
+From this we can finally conclude the result that we want:
+
+\begin{quote}
+    Every non-trivial monotone increasing property over a prime power of vertices is evasive.
+\end{quote}
+
+\textbf{Proof} Every
 
 \end{document}
