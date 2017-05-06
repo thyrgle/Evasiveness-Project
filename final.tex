@@ -1,4 +1,8 @@
-\documentclass[letterpaper,12pt]{article}
+\documentclass[a4paper]{article}
+
+%% Sets page size and margins
+\usepackage{fullpage}
+\usepackage{geometry}
 
 \usepackage[table]{xcolor} % Must come before packages that load xcolor
 
@@ -9,7 +13,7 @@
 \usepackage{booktabs}
 \usepackage{color}
 \usepackage{enumerate}
-\usepackage{graphics}
+\usepackage{graphicx}
 \usepackage{mdwlist}
 \usepackage{multicol}
 \usepackage[all]{xy}
@@ -17,7 +21,6 @@
 \usepackage[colorlinks=true, allcolors=blue]{hyperref}
 
 \usepackage[normalem]{ulem}
-\usepackage[margin=1in]{geometry}
 \setlength{\parskip}{1ex}
 
 \newcommand{\la}{\langle}
@@ -74,6 +77,12 @@ We will instead prove a special case of this theorem. Nevertheless, the same gen
     \textbf{Theorem (Brouwer Open Ball)} Any smooth function (continuous and differentiable) function $f$ from the closed (unit) disc to itself has a fixed point.
 \end{quote}
 
+\begin{figure}
+\includegraphics[height=4.5cm]{fixedpoint}
+\centering
+\caption{Possible different cases for $g(x)$, $x$ and $f(x)$. Left shows when $x$ is in the interior of the disc, the middle shows when $x$ is on the boundary, and the right is the case when $f(x) = x$ and the line segment is undefined.}
+\end{figure}
+
 \textbf{Proof} We make the following observation: 
 
 \begin{quote}
@@ -106,6 +115,12 @@ $$\ol{f}(x) = x$$
 
 However, what $f$ does on the simplex is much more limiting than any arbitrary conitinuous function so we can get an even greater set of fixed points!
 
+\begin{figure}
+    \includegraphics[height=4.5cm]{rotate}
+    \centering
+    \caption{The center of gravity is a fixed point of spinning a simplex.}
+\end{figure}
+
 \begin{quote}
     If $x \in \ol{\Delta}$ then $x$ is the sum of some linear combination of basis vectors. Define the \textbf{support simplex of $x$} $\Delta_x$ to be the collection of non-zero support vectors.
 \end{quote}
@@ -130,7 +145,7 @@ The rotations of these faces correspond to the "orbits" of $f$. Observing this f
     If $P$ is a non-evasive monotone property that invariant under cycles it must be evasive.
 \end{quote}
 
-\textbf{Proof}: Suppose otherwise, then $P$ is non-evasive $\implies P$ is collapsible $\implies$ for any function $f$, $f$ has a fixed point. But the orbit of such a function must be $\{1, 2, 3, \ldots |V_0| \}$, the largest face of the graph which means that the completely connected graph does not satisfy the property.
+\textbf{Proof}: Suppose otherwise, then $P$ is non-evasive $\implies P$ is collapsible $\implies$ for any function $f$, $f$ has a fixed point. But the orbit of such a function must be $\{1, 2, 3, \ldots |V| \}$, the largest face of the graph which means that the completely connected graph does not satisfy the property.
 
 \subsection{Finding the missing cycle}
 
@@ -142,7 +157,7 @@ We are almost ready to prove the main result. What we will plan to do now is sho
 
 We will not go through a formal proof of this, but to gain an intuition for this when ever $x$ is a fixed point for $\Gamma$ we can "change the basis" representation of $x$ to be written in terms of any other permutation.
 
-\subsection{Proof of Theorem}
+\section{Proof of Theorem}
 
 From this we can finally conclude the result that we want:
 
