@@ -47,30 +47,30 @@ In the previous paper, we have concluded that for any simplex associated with a 
     \textbf{Theorem} Any nontrivial monotone graph property on a graph with a prime power of vertices is evasive. \cite{orig}
 \end{quote}
 
-What is the general idea behind such a proof? Show that the associated simplicial complex is not collapsible! And how will we show it is not collapsible? We will use fixed point theorems from topology. These fixed points will imply that if it were collapsible, a fully connected graph would be one of the graphs that doesn't satisfy the property. But in that case we have to check every edge!
+What is the general idea behind the proof of this theorem? The idea is to show that the associated simplicial complex is not collapsible! And how will we show it is not collapsible? We will use fixed point theorems from topology. These fixed points will imply that if it were collapsible, a fully connected graph would be one of the graphs that doesn't satisfy the property. But in that case we have to check every edge!
 
 \section{Collapsibilty and Being Acyclic}
 
 Let's elaborate some more on the idea of collapsibility and smushing. Recall that we can collapse a complete triangle but not an empty triangle. We will impose some (admittedly bizzare) physical intuition for such a phenomenon.
 
-Suppose that an a simplicial complex is embedded in $\mathbb{R}^n$ matching the dimension of the simplex. So, the triangle for instance would be embedded in $\mathbb{R}^2$. Imagine the space that doesn't include the simplex as solid. Next imagine the space that is the simplex as some sort of compressible fluid. In the case of the filled triangle, one can imagine taking their hand and compressing the fluid of the triangle completely to a single point. In the case of the empty triangle, there is a "rock" on the inside of the triangle preventing you from compressing the fluid of the empty triangle any further.
+Suppose that a simplicial complex is embedded in $\mathbb{R}^n$ matching the dimension of the simplex. So, the triangle for instance would be embedded in $\mathbb{R}^2$. Imagine the space that doesn't include the simplex as solid. Next imagine the space that is the simplex as some sort of compressible fluid. In the case of the filled triangle, one can imagine taking their hand and compressing the fluid of the triangle completely to a single point. In the case of the empty triangle, there is a "rock" on the inside of the triangle preventing you from compressing the fluid of the empty triangle any further.
 
-More generally, one can imagine that a simplicial complex is collapsible if one can take they're hand and after a series of squishes the structure, there are no rocks in your hand.
+More generally, one can imagine that a simplicial complex is collapsible if one can take they're hand and after a sequence of squishes to the structure, there are no rocks in your hand.
 
-There are a couple ways to prove this see \cite{easy} and \cite{lecs}. However, in any case, the proof is rather involved. Ultimately, being able to smush the complex down to a single point implies that the structure is connected and has no holes in it. We call such a simplicial complex \textbf{acyclic}. As every collapsible simplicial complex can be smushed to a single point, every collapsible simplicial complex is acyclic.
+There are a couple ways to prove this (see \cite{easy} and \cite{lecs}). However, in any case, the proof is rather involved. Ultimately, being able to smush the complex down to a single point implies that the structure is connected and has no holes in it. We call such a simplicial complex \textbf{acyclic}. As every collapsible simplicial complex can be smushed to a single point, every collapsible simplicial complex is acyclic.
 
 \section{Fixed Points}
 
-Now that we have (admittedly, somewhat informally) described our surface as one connected component with no holes, we can begin to apply some topological machinery to the space. We now exam an extremely important tool in topology: fixed points.
+Now that we have (admittedly, somewhat informally) described our surface as one connected component with no holes, we can begin to apply some topological machinery to the space. We will now examine an extremely important tool in topology: fixed points.
 
 \subsection{Brouwer Fixed Point theorem}
 
 \begin{quote}
-    \textbf{Theorem (Brouwer)} Any continuous function from some geometric realization of a simplicial complex $\Delta$ (which we will denote $\ol{\Delta}$) fixes some point. In otherwords, say $f : \ol{\Delta} \to \ol{\Delta}$, then there is some $\delta \in \ol{\Delta}$ such that:
+    \textbf{Theorem (Simplicial Brouwer)} Any continuous function from some geometric realization of a simplicial complex $\Delta$ (which we will denote $\ol{\Delta}$) fixes some point. In otherwords, say $f : \ol{\Delta} \to \ol{\Delta}$, then there is some $\delta \in \ol{\Delta}$ such that:
     $$f(\delta) = \delta$$
 \end{quote}
 
-We will instead prove a special case of this theorem. Nevertheless, the same general idea can be used to prove this variant of Brouwer's theorem, however, it gets quite a bit messier.
+Rather than prove the general theorem above, we will prove a special case of the theorem. Nevertheless, the same general idea can be used to prove the simplicial complex version of Brouwer's theorem, however, it gets quite a bit messier.
 
 \begin{quote}
     \textbf{Theorem (Brouwer Open Ball)} Any smooth function (continuous and differentiable) function $f$ from the closed (unit) disc to itself has a fixed point.
@@ -88,13 +88,13 @@ We will instead prove a special case of this theorem. Nevertheless, the same gen
     \textbf{Retraction Lemma} There is no smooth map $g : D \to \partial D$ such that $g \upharpoonright \partial D \to \partial D$ is equivalent to the identity on the boundary.
 \end{quote}
 
-It is often stated as: there is no way to retract the disc to it's boundary. (It is usually consider fairly obvious to see why this is true, however, a rigorous proof of this involves use of Sard's Theorem which is beyond the scope of this paper.)
+It is often stated as: there is no way to retract the disc to it's boundary. (It is usually considered fairly obvious to see why this is true, however, a rigorous proof of this involves use of Sard's Theorem which is beyond the scope of this paper.)
 
-From this we will construct a function which is smooth but also the identity at the boundary given any smooth $f$ without fixed points.
+As long as $f$ has no fixed points, we will show one can construct a function which is smooth but also the identity at the boundary.
 
-As $f(x) \neq x$, we can construct a line from $f(x)$ through $x$ to the boundary. By calling this point $g(x)$ we get a new function $g : D \to \partial D$. Now, one important thing to to note is \textit{if} $f$ did indeed have a fixed point, it would be impossible to construct the ray! Now suppose that $x \in \partial D$, then $g(x) = x$ and so $g \upharpoonright \partial D$ is indeed the identity.
+As $f(x) \neq x$, we can construct a line from $f(x)$ through $x$ to the boundary. By calling this point $g(x)$ we get a new function $g : D \to \partial D$. Now, one important thing to note is \textit{if} $f$ did indeed have a fixed point, it would be impossible to construct the ray! Now suppose that $x \in \partial D$, then $g(x) = x$ and so $g \upharpoonright \partial D$ is indeed the identity.
 
-All we need to do now is show that $g$ is indeed a smooth function. As they $g(x)$, $f(x)$ and $x$ are all on the same line segment, it follows that:
+All we need to do now is show that $g$ is indeed a smooth function. As $g(x)$, $f(x)$ and $x$ are all on the same line segment, it follows that:
 
 $$g(x) = tx - (1 - t)f(x)$$
 
@@ -102,7 +102,7 @@ for some $t$. All we need to show is that $t(x)$ is a smooth function. This can 
 
 $$t^2|x - f(x)|^2 + 2tf(x)[x - f(x)] + f(x)^2 - 1 = 0$$
 
-The solution to the equation can be obtained from the quadratic formula (or WolframAlpha), but the actual solution does not matter, really all that is necessary is to observe that the quadratic formula applied to smooth functions is again smooth and so it follows that $g$ is smoothe \textbf{Retraction Lemma} then implies that $g$ cannot exist. Contradiction.
+The solution to the equation can be obtained from the quadratic formula (or WolframAlpha), but the actual solution does not matter, really all that is necessary is to observe that the quadratic formula applied to smooth functions is again smooth and so it follows that $g$ is smooth \textbf{Retraction Lemma} then implies that $g$ cannot exist.
 
 \section{Abstract Simplicial Complex versus the Geometric Realization}
 
@@ -134,14 +134,14 @@ This intuitively says:
     If $x$ is a fixed point, then the face containing $x$ is fixed by the permutation.
 \end{quote}
 
-Furthermore, suppose $\ol{f}$ has some face. Then it may be the case the face was "rotated" from the original $\ol{\Delta}$, however it should be intuitive that this rotation does not affect the center point and so the center point is a fixed point for $f$.
+Furthermore, suppose $\ol{f}$ has some face. Then it may be the case the face was "rotated" from the original $\ol{\Delta}$. However, it should be intuitive that this rotation does not affect the center point and so the center point is a fixed point for $f$.
 
 \subsection{Orbits}
 
 The rotations of these faces correspond to the "orbits" of $f$. Observing this fact we can almost conclude the following:
 
 \begin{quote}
-    If $P$ is a non-evasive monotone property that invariant under cycles it must be evasive.
+    If $P$ is a non-evasive monotone property that is invariant under cycles it must be evasive.
 \end{quote}
 
 \textbf{Proof}: Suppose otherwise, then $P$ is non-evasive $\implies P$ is collapsible $\implies$ for any function $f$, $f$ has a fixed point. But the orbit of such a function must be $\{1, 2, 3, \ldots |V| \}$, the largest face of the graph which means that the completely connected graph does not satisfy the property.
@@ -154,7 +154,7 @@ We are almost ready to prove the main result. What we will plan to do now is sho
     Let $\Gamma$ be a group of mappings and let $\Gamma'$ be a normal subgroup of order $p^k$ where $p$ is a prime. Suppose that $\Gamma/\Gamma'$ is cyclic, then every memeber of $\Gamma$ shares a fixed point.
 \end{quote}
 
-We will not go through a formal proof of this, but to gain an intuition for this when ever $x$ is a fixed point for $\Gamma$ we can "change the basis" representation of $x$ to be written in terms of any other permutation.
+We will not go through a formal proof of this, but to gain an intuition for this whenever $x$ is a fixed point for $\Gamma$ we can "change the basis" representation of $x$ to be written in terms of any other permutation.
 
 \section{Proof of Theorem}
 
@@ -164,7 +164,7 @@ From this we can finally conclude the result that we want:
     \textbf{Theorem} Every non-trivial monotone increasing property over a prime power of vertices is evasive.
 \end{quote}
 
-\textbf{Proof} Set $\Gamma$ to be the group of affine transformations (transformations of the form $ax + b$) and $\Gamma'$ to be the subgroup of translations (transformations of the form $x + b$). As $a$ and $b$ are in $\mathbb{Z}_{p^k}$, $\Gamma/\Gamma' \cong ax)$ which is cyclic. Translation groups are normal, so $\Gamma'$ is also normal. But the orbits of these functions are $\{ 1, 2, 3, \ldots |V| \}$. Thus by the preceeding theorem, the connected graph must not satisfy the property and the property must be evasive.
+\textbf{Proof} Set $\Gamma$ to be the group of affine transformations (transformations of the form $ax + b$) and $\Gamma'$ to be the subgroup of translations (transformations of the form $x + b$). As $a$ and $b$ are in $\mathbb{Z}_{p^k}$, $\Gamma/\Gamma' \cong ax$ which is cyclic. Translation groups are normal, so $\Gamma'$ is also normal. But the orbits of these functions are $\{ 1, 2, 3, \ldots |V| \}$. Thus by the preceeding theorem, the connected graph must not satisfy the property and the property must be evasive.
 
 \begin{thebibliography}{10}
 \bibitem{orig}
