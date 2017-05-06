@@ -46,162 +46,20 @@ In the previous paper, we have concluded that for any simplex associated with a 
 
 What is the general idea behind such a proof? Show that the associated simplicial complex is not collapsible!
 
-\section{Simplicial Complexes and Algebra}
 
-Before we begin to tackle decision trees we will have to make a detour and develop some tools for working with simplicial complexes. Here is a summary of what we will cover:
+\section{Collapsibilty and Being Acyclic}
 
-\begin{enumerate}
-    \item{
-            Definition of a Homology Group
-        }
-    \item{
-            Definition of $F_p$ acyclic
-        }
-    \item{
-            $\text{Collapsible} \implies F_p  \text{acyclic}$
-        }
-\end{enumerate}
+Let's elaborate some more on the idea of collapsibility and smushing. Recall that we can collapse a complete triangle but not an empty triangle. We will impose some (admittedly bizzare) physical intuition for such a phenomenon.
 
-\section{Collapsibility and Holes}
+Suppose that an a simplicial complex is embedded in $\mathbb{R}^n$ matching the dimension of the simplex. So, the triangle for instance would be embedded in $\mathbb{R}^2$. Imagine the space that doesn't include the simplex as solid. Next imagine the space that is the simplex as some sort of compressible fluid. In the case of the filled triangle, one can imagine taking their hand and compressing the fluid of the triangle completely to a single point. In the case of the empty triangle, there is a "rock" on the inside of the triangle preventing you from compressing the fluid of the empty triangle any further.
 
-We first should provide some intuition as to why collapsibility can (although not nearly as well as homology groups) detect holes in our structure. Imagine that the simplicial complex is a compressible fluid and that the space that is not an element of the complex is solid and rigid. Imagine taking your hand and squishing the fluid in order to reduce it to a single point. If there is a hole, it will feel like a rock in your hand. Otherwise, you can continue compressing everything down to a single point.
+More generally, one can imagine that a simplicial complex is collapsible if one can take they're hand and after a series of squishes the structure, there are no rocks in your hand.
 
-Of course, this is simply an analogy. Let's actually prove it.
-
-\subsection{Boundary Maps}
-
-Suppose we want to get the boundary of a simplicial complex. For example if we have a filled triangle $\Delta$ we may want some operator $\partial$ that $\partial \{1, 2, 3 \}$ (the face of the triangle) gives us just the edges surrounding the triangle.
-
-\begin{quote}
-    We define the \textbf{Boundary Map} of a simplicial complex to be precisely:
-    
-    $$\partial_n([v_0,v_1,\ldots,v_n]) = \sum_{i=0}^n (-1)^i[v_0,v_1,\ldots,v_{i-1},v_{i+1},\ldots,v_n ]$$
-
-    The terms in $[]$ can be thought of as a basis over some field.
-\end{quote}
-
-We now consider the $\ker(\partial)$. This ends up being the cycle space of a graph. They cycles are our tool for determining holes. But currently $\ker(\partial)$, by itself gives a few too many cycles needed to describe capture a hole. So we will define an equivalence class which does.
-
-Now, we can't exactly "prove" a definition, but let's see what it does to the filled triangle.
-
-\begin{quote}
-    \textbf{Example} Notice we can define the filled triangle as:
-
-    $$\Delta = \{ \{ 1, 2, 3 \}, \{ 1, 2 \}, \{ 1, 3 \}, \{ 2, 3 \} \{ 1 \}, \{ 2 \}, \{ 3 \} \}$$
-
-    And notice:
-
-    $$\partial_3([1,2,3]) = [1, 2] - [1, 3] + [2, 3]$$
-
-    Which gives a linear combination of edges to the face.
-\end{quote}
-
-Notice repeated application of the boundary operator returns linear combinations of one less "dimension". In our example we gave an element of size $3$, $[1,2,3]$, and got elements of size $2$, $[1,2]$, $[1,3]$, and $[2,3]$. We can visualize this as a chain of groups:
-
-$$ \cdots \xlra{\partial_3} C_2(\Delta, F_p) \xlra{\partial_2} C_1(\Delta, F_p) \xlra{\partial_1} C_0(\Delta, F_p) \xlra{\partial_0} 0 $$
-
-\subsection{Homology Groups}
-
-The $n$th homology group is, roughly speaking, a way of finding the number of $n$ dimensional holes in some surface. It is also worth mentioning the $0$th homology group corresponds to the number of connected componenets of a surface. Nevertheless, to say that it "counts" the number of holes is a bit misleading. A circle, for instance, has one $1$-dimensional hole in the center and has one connected component. It is not the case that $H_0(S^1) = 1$ and $H_1(S^1) = 1$. Remember how we got a linear combination for the boundary operator? We will need to specify what field we want to work over. $\mathbb{Z}$ is often used, so for example:
-
-$$H_k(S^1, \mathbb{Z}) =
-\begin{cases}
-    \mathbb{Z}, & k = 0, 1 \\
-    \{ 0 \}, & \text{otherwise}
-\end{cases}
-$$
-
-Sometimes $\mathbb{Z}$ is replaced with $\mathbb{Z}_2$, and in our case we will be mostly concerning ourselves $\mathbb{F}_p$. Although it might not be clear where $\mathbb{Z}$ comes from, one can for now think of $\mathbb{Z}$ as the number $1$, as this coincides with the informal defintion, namely, there is one connected componenet, and one $1$-dimensional hole. Now we will draw the connection between the homology groups and the boundary maps:
-
-\begin{quote}
-    We define the $n$\textbf{th homology group} as:
-
-    $$H_n(\Delta, F_p) = \frac{\ker(\partial_n)}{\text{im}(\partial_{n+1})}$$
-\end{quote}
-
-\subsection{Reduced Homology}
-
-We consider a variant of the homology just introduced known as the "Reduced Homology". The reduced homology makes working with certain spaces a bit easier. In particular, for a point the every homology group is $0$ except for $H_0$. We want to make this nicer, so we modify the chain so that every homology group is $0$.
-
-To do this consider we have an arbitrary chain:
-
-$$\cdots \lra C_2(\Delta, F_p) \lra C_1(\Delta, F_p) \lra C_0(\Delta, F_p) \lra 0$$
-
-We then define the function $r$ to be: (straight from wikipedia)
-$$r\left(\sum_i n_i \sigma_i\right) = \sum_i n_i$$
-
-And rework the chain to be:
-
-$$\cdots \lra C_2(\Delta, F_p) \lra C_1(\Delta, F_p) \lra C_0(\Delta, F_p) \xlra{r} F_p \lra 0$$
-
-This will cause the new $0$th homology group to be $0$ instead of $F_p$. Using this gives a nice definition for an acyclic simplicial complex:
-
-\begin{quote}
-    A simplicial complex is \textbf{acyclic} if the reduced homology is trivial.
-\end{quote}
-
-Intuitively speaking, a simplicial complex that is \textbf{acyclic} has no holes.
-
-\subsection{Exact Sequence}
-
-We now add an algebra tool to our disposal which will help us formally demonstrate that collapsible simplicial complex are acyclic. We introduce some notation to "visualize" the relationship between the boundary operator and homology groups. We consider any sequence of groups $Y_n$ and a function that maps between them. We write this as:
-
-$$\ldots \longrightarrow Y_2 \rightarrow Y_1 \rightarrow Y_0 \rightarrow 0 $$
-
-We can also arrange the lines vertically:
-
-\begin{displaymath}
-    \xymatrix{\vdots \ar[d] \\ Y_2 \ar[d] \\ Y_1 \ar[d] \\ Y_0 \ar[d] \\ 0 }
-\end{displaymath}
-
-We denote these \textbf{chain complexes} as $Y_{\tb}$. Now we can introduce a useful structure known as a \textbf{short exact sequence}.
-
-\subsection{Useful tools for Homological Algebra}
-
-\begin{quote}
-    A \textbf{short exact sequence} is a structure of the form:
-
-    $$0 \lra X_{\tb} \lra Y_{\tb} \lra Z_{\tb} \lra 0 $$
-
-\end{quote}
-
-Why is this useful? For our purposes, short exact sequences are useful because of the following lemma:
-
-\begin{quote}
-    \textbf{Lemma A} For a short exact sequence:
-
-    $$0 \lra X_{\tb} \lra Y_{\tb} \lra Z_{\tb} \lra 0 $$
-
-    if $X_{\tb}$ and $Z_{\tb}$ are acyclic, then $Y_{\tb}$ is acyclic.
-\end{quote}
-
-This is a well known fact in homological algebra, that we will not prove this fact here. We will, however, use this fact to provide a reasonably rigorous proof that collapsible simplicial complexes are acyclic.
-
-
-Another useful tool we will not prove:
-
-\begin{quote}
-    \textbf{Lemma B} For a short exact sequence:
-
-    $$0 \lra X_{\tb} \lra Y_{\tb} \lra Z_{\tb} \lra 0 $$ 
-
-\end{quote}
-
-\subsubsection{Collapsible Simplicial Complexes are Acyclic}
+There are a couple ways to prove this see \cite{easy} and \cite{lecs}. However, in any case, the proof is rather involved. Ultimately, being able to smush the complex down to a single point implies that the structure is connected and has no holes in it. We call such a simplicial complex \textbf{acyclic}. As every collapsible simplicial complex can be smushed to a single point, every collapsible simplicial complex is acyclic.
 
 \section{Fixed Points}
 
-At this point we have two major tools at our disposal:
-
-\begin{enumerate}
-    \item{
-            All nonevasive properties are collapsible.
-        }
-    \item{
-            All collapsible simplexes are $F_p$ acyclic.
-        }
-\end{enumerate}
-
+Now that we have (admittedly, somewhat informally) described our surface as one connected component with no holes, we can begin to apply some topological machinery to the space. We now exam an extremely important tool in topology: fixed points.
 
 \subsection{Brouwer Fixed Point theorem}
 
@@ -301,14 +159,15 @@ Kahn, J., Saks, M. and Sturtevant, D. \textbf{A topological approach to evasiven
 \bibitem{easy}
 Miller, C. \textbf{ Evasiveness of Graph Properties and Topological Fixed-Point Theorems}. \url{https://arxiv.org/abs/1306.0110}
 
-\bibitem{riv}
-Rivest, R. and Vuillemin S. \textbf{On recognizing graph properties from adjacency matrices} (1978)
-
 \bibitem{kleit}
 Kleitman J. and Kwiatkowski J. \textbf{Further results on the Aanderaa-Rosenberg Conjecture}. (1980)
 
 \bibitem{lecs}
 Lovász, L. and Young N. \textbf{Lecture Notes on Evasiveness of Graph Properties}. (2002)
+
+\bibitem{guil}
+Guillemin V. and Pollack A. \textbf{Differential Topology}. (1974)
+
 \end{thebibliography}
 
 \end{document}
