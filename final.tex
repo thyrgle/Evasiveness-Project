@@ -55,7 +55,7 @@ Let's elaborate some more on the idea of collapsibility and smushing. Recall tha
 
 Suppose that a simplicial complex is embedded in $\mathbb{R}^n$ matching the dimension of the simplex. So, the triangle for instance would be embedded in $\mathbb{R}^2$. Imagine the space that doesn't include the simplex as solid. Next imagine the space that is the simplex as some sort of compressible fluid. In the case of the filled triangle, one can imagine taking their hand and compressing the fluid of the triangle completely to a single point. In the case of the empty triangle, there is a "rock" on the inside of the triangle preventing you from compressing the fluid of the empty triangle any further.
 
-More generally, one can imagine that a simplicial complex is collapsible if one can take they're hand and after a sequence of squishes to the structure, there are no rocks in your hand.
+More generally, one can imagine that a simplicial complex is collapsible if one can take their hand and after a sequence of squishes to the structure, there are no rocks in your hand.
 
 There are a couple ways to prove this (see \cite{easy} and \cite{lecs}). However, in any case, the proof is rather involved. Ultimately, being able to smush the complex down to a single point implies that the structure is connected and has no holes in it. We call such a simplicial complex \textbf{acyclic}. As every collapsible simplicial complex can be smushed to a single point, every collapsible simplicial complex is acyclic.
 
@@ -90,9 +90,9 @@ Rather than prove the general theorem above, we will prove a special case of the
 
 It is often stated as: there is no way to retract the disc to it's boundary. (It is usually considered fairly obvious to see why this is true, however, a rigorous proof of this involves use of Sard's Theorem which is beyond the scope of this paper.)
 
-As long as $f$ has no fixed points, we will show one can construct a function which is smooth but also the identity at the boundary.
+As long as $f$ has no fixed points, we will show one can construct a function which is smooth but also the identity map at the boundary.
 
-As $f(x) \neq x$, we can construct a line from $f(x)$ through $x$ to the boundary. By calling this point $g(x)$ we get a new function $g : D \to \partial D$. Now, one important thing to note is \textit{if} $f$ did indeed have a fixed point, it would be impossible to construct the ray! Now suppose that $x \in \partial D$, then $g(x) = x$ and so $g \upharpoonright \partial D$ is indeed the identity.
+As $f(x) \neq x$, we can construct a line from $f(x)$ through $x$ to the boundary (see Figure 1). By calling this point $g(x)$ we get a new function $g : D \to \partial D$. Now, one important thing to note is \textit{if} $f$ did indeed have a fixed point, it would be impossible to construct the ray! Now suppose that $x \in \partial D$, then $g(x) = x$ and so $g \upharpoonright \partial D$ is indeed the identity.
 
 All we need to do now is show that $g$ is indeed a smooth function. As $g(x)$, $f(x)$ and $x$ are all on the same line segment, it follows that:
 
@@ -102,7 +102,7 @@ for some $t$. All we need to show is that $t(x)$ is a smooth function. This can 
 
 $$t^2|x - f(x)|^2 + 2tf(x)[x - f(x)] + f(x)^2 - 1 = 0$$
 
-The solution to the equation can be obtained from the quadratic formula (or WolframAlpha), but the actual solution does not matter, really all that is necessary is to observe that the quadratic formula applied to smooth functions is again smooth and so it follows that $g$ is smooth \textbf{Retraction Lemma} then implies that $g$ cannot exist.
+The solution to the equation can be obtained from the quadratic formula (or WolframAlpha), but the actual solution does not matter, really all that is necessary is to observe that the quadratic formula applied to smooth functions is again smooth and so it follows that $g$ is smooth but then by \textbf{Retraction Lemma}, $g$ cannot exist.
 
 \section{Abstract Simplicial Complex versus the Geometric Realization}
 
@@ -134,7 +134,7 @@ This intuitively says:
     If $x$ is a fixed point, then the face containing $x$ is fixed by the permutation.
 \end{quote}
 
-Furthermore, suppose $\ol{f}$ has some face. Then it may be the case the face was "rotated" from the original $\ol{\Delta}$. However, it should be intuitive that this rotation does not affect the center point and so the center point is a fixed point for $f$.
+Furthermore, suppose $\ol{f}$ has some face. Then it may be the case the face was "rotated" from the original $\ol{\Delta}$. However, it should be intuitive that this rotation does not affect the center point (see Figure 2) and so the center point is a fixed point for $f$.
 
 \subsection{Orbits}
 
