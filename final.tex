@@ -44,11 +44,10 @@
 In the previous paper, we have concluded that for any simplex associated with a graph property to be nonevasive it must be collapsible. It may still be the case that there is an evasive property which is also collapsible. We can ask the question: Are there any graph properties which are not collapsible? This is still very much an active field of research, we will focus on one theorem in particular in this paper:
 
 \begin{quote}
-    Any nontrivial monotone graph property on a graph with a prime power of vertices is evasive.
+    \textbf{Theorem} Any nontrivial monotone graph property on a graph with a prime power of vertices is evasive. \cite{orig}
 \end{quote}
 
-What is the general idea behind such a proof? Show that the associated simplicial complex is not collapsible!
-
+What is the general idea behind such a proof? Show that the associated simplicial complex is not collapsible! And how will we show it is not collapsible? We will use fixed point theorems from topology. These fixed points will imply that if it were collapsible, a fully connected graph would be one of the graphs that doesn't satisfy the property. But in that case we have to check every edge!
 
 \section{Collapsibilty and Being Acyclic}
 
@@ -83,13 +82,13 @@ We will instead prove a special case of this theorem. Nevertheless, the same gen
 \caption{Possible different cases for $g(x)$, $x$ and $f(x)$. Left shows when $x$ is in the interior of the disc, the middle shows when $x$ is on the boundary, and the right is the case when $f(x) = x$ and the line segment is undefined.}
 \end{figure}
 
-\textbf{Proof} We make the following observation: 
+\textbf{Proof} (Our proof will be based on \cite{guil}) We make the following observation: 
 
 \begin{quote}
     \textbf{Retraction Lemma} There is no smooth map $g : D \to \partial D$ such that $g \upharpoonright \partial D \to \partial D$ is equivalent to the identity on the boundary.
 \end{quote}
 
-It is often stated as: there is no way to retract the disc to it's boundary.
+It is often stated as: there is no way to retract the disc to it's boundary. (It is usually consider fairly obvious to see why this is true, however, a rigorous proof of this involves use of Sard's Theorem which is beyond the scope of this paper.)
 
 From this we will construct a function which is smooth but also the identity at the boundary given any smooth $f$ without fixed points.
 
@@ -107,7 +106,7 @@ The solution to the equation can be obtained from the quadratic formula (or Wolf
 
 \section{Abstract Simplicial Complex versus the Geometric Realization}
 
-We make the following observation that there is a geometric realization of $f$. Call it $\ol{f}$. Observe that $\ol{f}$ is a continuous map from the geometric realization of $\Delta$ (we will refer to this as $\ol{\Delta}$ to the geometric realization of $\Delta'$ ($\ol{\Delta}$).
+For any simplicial automorphism $f : \Delta \to \Delta$ we observe that there is the formal algebraic definition on how $f$ mutates the faces, and a geometric realization of such a function. Call the geometric realization of $f$, $\ol{f}$. Observe that $\ol{f}$ is a continuous map from the geometric realization of $\Delta$ (we will refer to this as $\ol{\Delta}$ to the geometric realization of $\Delta'$ ($\ol{\Delta}$).
 
 If $\ol{f}$ maps from $\ol{\Delta}$ to $\ol{\Delta}$, it follows that we can apply Brouwer Fixed Point theorem and notice that there is some fixed point $x \in \ol{\Delta}$ such that:
 
@@ -162,10 +161,10 @@ We will not go through a formal proof of this, but to gain an intuition for this
 From this we can finally conclude the result that we want:
 
 \begin{quote}
-    Every non-trivial monotone increasing property over a prime power of vertices is evasive.
+    \textbf{Theorem} Every non-trivial monotone increasing property over a prime power of vertices is evasive.
 \end{quote}
 
-\textbf{Proof} Set $\Gamma$ to be the group of affine transformations (transformations of the form $ax + b$) and $\Gamma'$ to be the subgroup of translations (transformations of the form$x + b$). As $a$ and $b$ are in $\mathbb{Z}_{p^k}$, $\Gamma/\Gamma' \cong ax)$ which is cyclic. We leave it as an exercise to show that it is $\Gamma'$ is normal. But the orbits of these functions are $\{ 1, 2, 3, \ldots |V| \}$. Thus by the preceeding theorem, the connected graph must not satisfy the property and the property must be evasive.
+\textbf{Proof} Set $\Gamma$ to be the group of affine transformations (transformations of the form $ax + b$) and $\Gamma'$ to be the subgroup of translations (transformations of the form $x + b$). As $a$ and $b$ are in $\mathbb{Z}_{p^k}$, $\Gamma/\Gamma' \cong ax)$ which is cyclic. Translation groups are normal, so $\Gamma'$ is also normal. But the orbits of these functions are $\{ 1, 2, 3, \ldots |V| \}$. Thus by the preceeding theorem, the connected graph must not satisfy the property and the property must be evasive.
 
 \begin{thebibliography}{10}
 \bibitem{orig}
@@ -173,9 +172,6 @@ Kahn, J., Saks, M. and Sturtevant, D. \textbf{A topological approach to evasiven
 
 \bibitem{easy}
 Miller, C. \textbf{ Evasiveness of Graph Properties and Topological Fixed-Point Theorems}. \url{https://arxiv.org/abs/1306.0110}
-
-\bibitem{kleit}
-Kleitman J. and Kwiatkowski J. \textbf{Further results on the Aanderaa-Rosenberg Conjecture}. (1980)
 
 \bibitem{lecs}
 Lovász, L. and Young N. \textbf{Lecture Notes on Evasiveness of Graph Properties}. (2002)
