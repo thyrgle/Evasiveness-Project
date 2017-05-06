@@ -13,6 +13,7 @@
 \usepackage{mdwlist}
 \usepackage{multicol}
 \usepackage[all]{xy}
+\usepackage{extarrows}
 
 \usepackage[normalem]{ulem}
 \usepackage[margin=1in]{geometry}
@@ -21,6 +22,7 @@
 \newcommand{\la}{\langle}
 \newcommand{\ra}{\rangle}
 \newcommand{\lra}{\longrightarrow}
+\newcommand{\xlra}{\xlongrightarrow}
 \newcommand{\tb}{\text{\textbullet}}
 \newcommand{\sgn}{\text{sgn}}
 \newcommand{\Tr}{\text{Tr}}
@@ -35,9 +37,7 @@
 
 \section{Introduction}
 
-In the previous paper, we have concluded that for any simplex associated with a graph property to be nonevasive it must be collapsible. It may still be the case that there is an evasive property which is also collapsible. What then does this property buy us?
-
-We can ask the question: Are there any graph properties which are not collapsible? This is still very much an active field of research, we will focus on one theorem in particular in this paper:
+In the previous paper, we have concluded that for any simplex associated with a graph property to be nonevasive it must be collapsible. It may still be the case that there is an evasive property which is also collapsible. We can ask the question: Are there any graph properties which are not collapsible? This is still very much an active field of research, we will focus on one theorem in particular in this paper:
 
 \begin{quote}
     Any nontrivial monotone graph property on a graph with a prime power of vertices is evasive.
@@ -69,28 +69,48 @@ Of course, this is simply an analogy. Let's actually prove it.
 
 \subsection{Boundary Maps}
 
-Suppose we want to get the boundary of a simplicial complex. For example if we have a filled triangle $\Delta$ we may want some operator $\partial$ that $\partial \Delta$ gives us just the edges. In the case, a filled triangle should become an empty triangle.
+Suppose we want to get the boundary of a simplicial complex. For example if we have a filled triangle $\Delta$ we may want some operator $\partial$ that $\partial \{1, 2, 3 \}$ (the face of the triangle) gives us just the edges surrounding the triangle.
 
 \begin{quote}
     We define the \textbf{Boundary Map} of a simplicial complex to be precisely:
     
-    $$d_n([v_0,v_1,\ldots,v_n]) = \sum_{i=0}^n (-1)^i[v_0,v_1,\ldots,v_{i-1},v_{i+1},\ldots,v_n ]$$
+    $$\partial_n([v_0,v_1,\ldots,v_n]) = \sum_{i=0}^n (-1)^i[v_0,v_1,\ldots,v_{i-1},v_{i+1},\ldots,v_n ]$$
+
+    The terms in $[]$ can be thought of as a basis over some field.
 \end{quote}
 
 We now consider the $\ker(\partial)$. This ends up being the cycle space of a graph. They cycles are our tool for determining holes. But currently $\ker(\partial)$, by itself gives a few too many cycles needed to describe capture a hole. So we will define an equivalence class which does.
 
+Now, we can't exactly "prove" a definition, but let's see what it does to the filled triangle.
+
+\begin{quote}
+    \textbf{Example} Notice we can define the filled triangle as:
+
+    $$\Delta = \{ \{ 1, 2, 3 \}, \{ 1, 2 \}, \{ 1, 3 \}, \{ 2, 3 \} \{ 1 \}, \{ 2 \}, \{ 3 \} \}$$
+
+    And notice:
+
+    $$\partial_3([1,2,3]) = [1, 2] - [1, 3] + [2, 3]$$
+
+    Which gives a linear combination of edges to the face.
+\end{quote}
+
+Notice repeated application of the boundary operator returns linear combinations of one less "dimension". In our example we gave an element of size $3$, $[1,2,3]$, and got elements of size $2$, $[1,2]$, $[1,3]$, and $[2,3]$. We can visualize this as a chain of groups:
+
+$$ \cdots \xlra{\partial_3} C_2(\Delta, F_p) \xlra{\partial_2} C_1(\Delta, F_p) \xlra{\partial_1} C_0(\Delta, F_p) \xlra{\partial_0} 0 $$
+
 \subsection{Homology Groups}
 
-The $n$th homology group is, roughly speaking, a way of finding the number of $n$ dimensional holes in some surface. It is also worth mentioning the $0$th homology group corresponds to the number of connected componenets of a surface. Nevertheless, to say that it "counts" the number of holes is a bit misleading. A circle, for instance, has one $1$-dimensional hole in the center and has one connected component. It is not the case that $H_0(S^1) = 1$ and $H_1(S^1) = 1$. Often one will see the following result instead:
+The $n$th homology group is, roughly speaking, a way of finding the number of $n$ dimensional holes in some surface. It is also worth mentioning the $0$th homology group corresponds to the number of connected componenets of a surface. Nevertheless, to say that it "counts" the number of holes is a bit misleading. A circle, for instance, has one $1$-dimensional hole in the center and has one connected component. It is not the case that $H_0(S^1) = 1$ and $H_1(S^1) = 1$. Remember how we got a linear combination for the boundary operator? We will need to specify what field we want to work over. $\mathbb{Z}$ is often used, so for example:
 
-$$H_k(S^1) =
+$$H_k(S^1, \mathbb{Z}) =
 \begin{cases}
     \mathbb{Z}, & k = 0, 1 \\
     \{ 0 \}, & \text{otherwise}
 \end{cases}
 $$
 
-Sometimes $\mathbb{Z}$ is replaced with $\mathbb{Z}_2$, and in our case we will be mostly concerning ourselves $\mathbb{F}_p$. Although it might not be clear where $\mathbb{Z}$ comes from, one should for now think of $\mathbb{Z}$ as the number $1$, as this coincides with the informal defintion, namely, there is one connected componenet, and one $1$-dimensional hole.
+Sometimes $\mathbb{Z}$ is replaced with $\mathbb{Z}_2$, and in our case we will be mostly concerning ourselves $\mathbb{F}_p$. Although it might not be clear where $\mathbb{Z}$ comes from, one can for now think of $\mathbb{Z}$ as the number $1$, as this coincides with the informal defintion, namely, there is one connected componenet, and one $1$-dimensional hole. Now we will draw the connection between the homology groups and the boundary maps:
 
 \begin{quote}
     We define the $n$\textbf{th homology group} as:
@@ -104,22 +124,22 @@ We consider a variant of the homology just introduced known as the "Reduced Homo
 
 To do this consider we have an arbitrary chain:
 
-$$\cdots \lra C_2 \lra C_1 \lra C_0 \lra 0$$
+$$\cdots \lra C_2(\Delta, F_p) \lra C_1(\Delta, F_p) \lra C_0(\Delta, F_p) \lra 0$$
 
 We then define the function $r$ to be: (straight from wikipedia)
 $$r\left(\sum_i n_i \sigma_i\right) = \sum_i n_i$$
 
 And rework the chain to be:
 
-$$\cdots \rightarrow C_2 \rightarrow C_1 \rightarrow C_0 \xrightarrow{r} F_p \rightarrow 0$$
+$$\cdots \lra C_2(\Delta, F_p) \lra C_1(\Delta, F_p) \lra C_0(\Delta, F_p) \xlra{r} F_p \lra 0$$
 
-\subsubsection{Acyclic Simplicical Complexes}
-
-Intuitively speaking, a simplicial complex that is \textbf{acyclic} has no holes. More formally:
+This will cause the new $0$th homology group to be $0$ instead of $F_p$. Using this gives a nice definition for an acyclic simplicial complex:
 
 \begin{quote}
     A simplicial complex is \textbf{acyclic} if the reduced homology is trivial.
 \end{quote}
+
+Intuitively speaking, a simplicial complex that is \textbf{acyclic} has no holes.
 
 \subsection{Exact Sequence}
 
@@ -127,17 +147,13 @@ We now add an algebra tool to our disposal which will help us formally demonstra
 
 $$\ldots \longrightarrow Y_2 \rightarrow Y_1 \rightarrow Y_0 \rightarrow 0 $$
 
-So in the case of homology groups:
-
-$$\ldots \rightarrow H_2 \rightarrow H_1 \rightarrow H_0 \rightarrow 0 $$
-
 We can also arrange the lines vertically:
 
 \begin{displaymath}
     \xymatrix{\vdots \ar[d] \\ Y_2 \ar[d] \\ Y_1 \ar[d] \\ Y_0 \ar[d] \\ 0 }
 \end{displaymath}
 
-We denote these \textbf{chain complexes} as $Y_{\tb}$. Now we can introduce a useful structure know as a \textbf{short exact sequence}.
+We denote these \textbf{chain complexes} as $Y_{\tb}$. Now we can introduce a useful structure known as a \textbf{short exact sequence}.
 
 \subsection{Useful tools for Homological Algebra}
 
